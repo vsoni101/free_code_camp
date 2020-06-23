@@ -1,30 +1,36 @@
 
 var express = require('express');
 var app = express();
+require('dotenv').config();
 
 console.log("hello world!!!");
 
 app.use(express.static(__dirname + "/public"));
 
 app.get("/json", (req, res)=>{
-  res.json({
-    "message": "hello JSON"
-  })
-})
+  if (process.env.MESSAGE_STYLE === "uppercase") { 
+    res.json({
+      "message": "HELLO JSON"
+    }) }
+  else {
+    res.json({
+      "message": "Hello json"
+    }) }
+});
 
 app.get("/", (req, res)=>{
   res.sendFile(`${__dirname}/views/index.html`);
-})
+});
 
 // --> OR
 
 // app.get("/", (req, res) => {
 //   res.sendFile(__dirname + "/views/index.html");
-// })
+// });
 
 app.get("/", (req, res) => {
   res.send("Hello Express");
-})
+});
 
 // --> 7)  Mount the Logger middleware here
 
