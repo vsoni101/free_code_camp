@@ -4,6 +4,10 @@ var app = express();
 
 console.log("hello world!!!");
 
+app.get("/", (req, res)=>{
+  res.send("Hello Express");
+})
+
 
 
 // --> 7)  Mount the Logger middleware here
