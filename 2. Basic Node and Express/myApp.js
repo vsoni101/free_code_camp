@@ -4,10 +4,21 @@ var app = express();
 
 console.log("hello world!!!");
 
+app.use(express.static(__dirname + "/public"));
+
+// app.get("/", (req, res)=>{
+//   res.send("Hello Express");
+// })
+
 app.get("/", (req, res)=>{
-  res.send("Hello Express");
+  res.sendFile(`${__dirname}/views/index.html`);
 })
 
+// --> OR
+
+// app.get("/", (req, res) => {
+//   res.sendFile(__dirname + "/views/index.html");
+// })
 
 
 // --> 7)  Mount the Logger middleware here
